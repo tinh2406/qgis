@@ -442,11 +442,10 @@ export const actionAddLayerWMS = ({ layer, workspace, map }) => {
         format: new GeoJSON(),
       }),
       style: function (feature) {
-        // console.log(feature.getKeys());
+        // console.log(feature.getKeys(),feature.get("COLOR"));
         const color =
-          feature.get("COLOR") || layer.name === "CAY_XANH"
-            ? "#00ff00"
-            : randomColor();
+          feature.get("COLOR") ||
+          (layer.name === "CAY_XANH" ? "#00ff00" : randomColor());
         style.getFill().setColor(color);
         return style;
       },
