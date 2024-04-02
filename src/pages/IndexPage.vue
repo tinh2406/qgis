@@ -76,6 +76,8 @@ import {
   getCurrentInstance,
   provide,
 } from "vue";
+import { ImageWMS } from "ol/source";
+
 import _debounce from "lodash/debounce";
 import _isEmpty from "lodash/isEmpty";
 import { useQuasar } from "quasar";
@@ -452,7 +454,16 @@ export default defineComponent({
         view: unref(view),
       });
       initPopupEvent();
-      // unref(map).addLayer(unref(vectorLayer));
+      // const layer = new ImageLayer({
+      //   // extent: [-13884991, 2870341, -7455066, 6338219],
+      //   source: new ImageWMS({
+      //     url: "https://ahocevar.com/geoserver/wms",
+      //     params: { LAYERS: "topp:states" },
+      //     ratio: 1,
+      //     serverType: "geoserver",
+      //   }),
+      // });
+      // unref(map).addLayer(unref(layer));
     });
     onUnmounted(() => {
       $bus.off("close-popup");
